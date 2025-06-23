@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme{
+    --color-bggray: #121212;
+    --color-card: #1E1E1E;
+    --color-primary: '#FFFFFF';
+    --color-secondary: '#CCCCCC';
+    --color-accent: '#E95420';
+    --color-border: '#333333';
+    --color-checkbox: '#888888';
+    --color-hover: '#FF6B2D';   
+    --color-animate-slide-up: slide-up 0.8s ease-out;
+    @keyframes slide-up {
+      0% { transform: translateY(80%); opacity: 0; },
+   
+
+      100%: { transform: translateY(100%);opacity: 0; };
+    }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+
+}
+
+
+body {
+    @apply bg-white text-black transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply bg-bggray text-white;
+  }
+  
