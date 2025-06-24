@@ -24,8 +24,8 @@ const Login = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = wantsToRegister
-      ? `${BASE_URL}/api/register`
-      : `${BASE_URL}api/login`;
+      ? `${BASE_URL}/api/user/register`
+      : `${BASE_URL}api/user/login`;
     const payload = wantsToRegister
       ? { name, email, password, confirmpassword }
       : { email, password };
