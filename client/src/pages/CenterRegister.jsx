@@ -66,7 +66,7 @@ const CenterRegister = () => {
             value={value}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border rounded dark:bg-gray-700 dark:text-white capitalize"
+            className="w-full px-4 py-2 border rounded dark:bg-gray-700 dark:text-white "
           />
         ))}
 
