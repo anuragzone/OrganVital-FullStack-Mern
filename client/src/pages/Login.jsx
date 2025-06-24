@@ -25,7 +25,7 @@ const Login = ({ onClose }) => {
     e.preventDefault();
     const url = wantsToRegister
       ? `${BASE_URL}/api/user/register`
-      : `${BASE_URL}api/user/login`;
+      : `${BASE_URL}/api/user/login`;
     const payload = wantsToRegister
       ? { name, email, password, confirmpassword }
       : { email, password };
