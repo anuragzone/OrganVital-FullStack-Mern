@@ -28,6 +28,7 @@ import CentreDashboardLayout from "./layouts/CenterDashboardLayout";
 import CentreDashboard from "./pages/CentreDashboard/CentreDashboard";
 import CentreProfile from "./components/CentreDashboard/CentreProfile";
 import CentreApprovals from "./components/CentreDashboard/CentreApprovals";
+import CenterRegister from "./pages/CenterRegister";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -118,6 +119,8 @@ function App() {
 
           <Route path="/center">
             <Route path="login" element={<CenterLogin />} />
+            <Route path="register" element={<CenterRegister />} />
+
 
             <Route element={<ProtectedCenterRoute />}>
               <Route

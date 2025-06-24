@@ -2,7 +2,7 @@ const express = require("express");
 const Center = require("../models/Center");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-// routes/CenterRoutes.js
+
 
 
 const verifyUser = require("../middlewares/AuthCenter");

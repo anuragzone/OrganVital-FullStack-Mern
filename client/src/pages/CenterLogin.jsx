@@ -30,7 +30,7 @@ const CenterLogin = () => {
 
       localStorage.setItem("centerToken", data.token);
       toast.success("Login successful!");
-      navigate("/center/dashboard"); // ✅ Correct route here
+      navigate("/center/dashboard");
     } catch (err) {
       setError(err.message);
       toast.error(err.message);
@@ -38,7 +38,7 @@ const CenterLogin = () => {
   };
 
   const handleClose = () => {
-    navigate("/"); // Redirect to homepage or wherever you want
+    navigate("/");
   };
 
   return (
@@ -49,7 +49,6 @@ const CenterLogin = () => {
         onSubmit={handleSubmit}
         className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl w-full max-w-md space-y-4 relative"
       >
-       
         <button
           onClick={handleClose}
           type="button"
@@ -96,7 +95,9 @@ const CenterLogin = () => {
         <div className="flex justify-between items-center text-sm">
           <span
             className="text-blue-600 hover:cursor-pointer hover:underline cursor-pointer"
-            onClick={() => toast.info("Forgot password functionality coming soon!")}
+            onClick={() =>
+              toast.info("Forgot password functionality coming soon!")
+            }
           >
             Forgot password?
           </span>
@@ -108,6 +109,19 @@ const CenterLogin = () => {
         >
           Login
         </button>
+
+        <div className="flex justify-center mt-2 text-sm">
+          <p className="mr-2 text-gray-600 dark:text-gray-300">
+            Don’t have a center account?
+          </p>
+          <button
+            type="button"
+            className="text-blue-600 hover:underline"
+            onClick={() => navigate("/center/register")}
+          >
+            Register
+          </button>
+        </div>
       </form>
     </div>
   );
