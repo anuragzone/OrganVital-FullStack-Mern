@@ -32,7 +32,7 @@ app.use(express.json());
 app.get("/",(req,res)=>{
     res.status(200).send( "Your express server is running...")
 })
-app.use("/api",loginRegister);
+app.use("/api/user",loginRegister);
 
 app.use("/api",Profile);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
