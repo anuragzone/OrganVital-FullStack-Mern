@@ -62,7 +62,7 @@ const CenterRegister = () => {
             key={field}
             type={field === "email" ? "email" : "text"}
             name={field}
-            placeholder={field.replace(/([A-Z])/g, " $1")}
+            placeholder={field}
             value={value}
             onChange={handleChange}
             required
