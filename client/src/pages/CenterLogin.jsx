@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const CenterLogin = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
@@ -19,7 +19,7 @@ const CenterLogin = () => {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/center/login", {
+      const res = await fetch(`${BASE_URL}/api/center/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

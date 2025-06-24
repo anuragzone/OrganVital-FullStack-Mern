@@ -1,4 +1,4 @@
-//client/src/layouts/CenterDashboardLayout.jsx
+
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import CenterTopBar from '../components/CentreDashboard/CentreTopBar';

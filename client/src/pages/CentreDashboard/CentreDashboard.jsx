@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const CentreDashboard = () => {
   const [summary, setSummary] = useState({ pending: 0, approved: 0, rejected: 0 });
   const [recent, setRecent] = useState([]);
@@ -7,7 +7,7 @@ const CentreDashboard = () => {
   useEffect(() => {
     const token = localStorage.getItem("centerToken");
 
-    fetch("http://localhost:5000/api/center/summary", {
+    fetch(`${BASE_URL}/api/center/summary`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

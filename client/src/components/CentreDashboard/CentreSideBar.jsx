@@ -1,4 +1,4 @@
-// CenterSidebar.jsx
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaTachometerAlt, FaCheckCircle, FaUser, FaHome } from "react-icons/fa";

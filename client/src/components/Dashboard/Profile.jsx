@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { z } from "zod";
 import axios from 'axios';
 import defaultProfilePic from '../../assets/smiling-family.jpg';
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Profile = () => {
   const profileSchema = z.object({
