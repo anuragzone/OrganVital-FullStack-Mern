@@ -26,7 +26,7 @@ import CenterLogin from "./pages/CenterLogin";
 import ProtectedCenterRoute from "./components/ProtectedCentreRoute";
 import CentreDashboardLayout from "./layouts/CenterDashboardLayout";
 import CentreDashboard from "./pages/CentreDashboard/CentreDashboard";
-import CentreProfile from "./components/CentreDashboard/centreProfile";
+import CentreProfile from "./components/CentreDashboard/CentreProfile";
 import CentreApprovals from "./components/CentreDashboard/CentreApprovals";
 
 function App() {
