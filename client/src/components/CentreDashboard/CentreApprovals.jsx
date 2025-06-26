@@ -67,8 +67,8 @@ const CentreApprovals = () => {
   const filtered = applications.filter((app) => {
     const matchesStatus = filter === "all" || app.status === filter;
     const matchesSearch =
-      app.userId?.firstname.toLowerCase().includes(search.toLowerCase()) ||
-      app.userId?.email.toLowerCase().includes(search.toLowerCase());
+    (app.userId?.firstname || "").toLowerCase().includes(search.toLowerCase()) ||
+    (app.userId?.email || "").toLowerCase().includes(search.toLowerCase())
     return matchesStatus && matchesSearch;
   });
 
