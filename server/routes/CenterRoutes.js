@@ -3,13 +3,9 @@ const Center = require("../models/Center");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
+const verifyUser = require("../middlewares/AuthCenter"); 
 
 
-const verifyUser = require("../middlewares/AuthCenter");
-
-
-
-// Register Center
 router.post("/register", async (req, res) => {
   try {
     const { name, centerCode, email, password, contact, address, city, state, pinCode } = req.body;
@@ -34,6 +30,8 @@ router.post("/register", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -55,22 +53,30 @@ router.post("/login", async (req, res) => {
 
 router.get("/center-profile", verifyUser, async (req, res) => {
   try {
-    console.log("User ID from token:", req.center.id); 
-    const center = await Center.findById(req.center.id).select("-password");
-    if (!center) {
-      return res.status(404).json({ message: "Center not found" });
-    }
+    const centerId = req.center?.id;
+    if (!centerId) return res.status(401).json({ message: "Unauthorized access" });
+
+    const center = await Center.findById(centerId).select("-password");
+    if (!center) return res.status(404).json({ message: "Center not found" });
+
     res.json(center);
   } catch (error) {
-    console.error("Error fetching center profile:", error); 
+    console.error("Error fetching center profile:", error);
     res.status(500).json({ message: "Server error" });
   }
 });
+
+
 router.put("/update-profile", verifyUser, async (req, res) => {
   try {
-    const updated = await Center.findByIdAndUpdate(req.user.id, req.body, {
+    const centerId = req.center?.id;
+    if (!centerId) return res.status(401).json({ message: "Unauthorized access" });
+
+    const updated = await Center.findByIdAndUpdate(centerId, req.body, {
       new: true
     }).select("-password");
+
+    if (!updated) return res.status(404).json({ message: "Center not found" });
 
     res.json(updated);
   } catch (error) {
@@ -79,11 +85,12 @@ router.put("/update-profile", verifyUser, async (req, res) => {
   }
 });
 
+
 router.get("/center-data", async (req, res) => {
   try {
     const { state } = req.query;
-
     const query = state ? { state } : {};
+
     const centers = await Center.find(query).select("name city state _id");
 
     res.json(centers);
@@ -92,6 +99,5 @@ router.get("/center-data", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 module.exports = router;
