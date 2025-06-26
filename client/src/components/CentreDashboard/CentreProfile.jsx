@@ -51,7 +51,7 @@ const CentreProfile = () => {
       <h1 className="text-3xl font-bold mb-6 text-red-600 text-center">Center Profile</h1>
 
       <form onSubmit={handleUpdate} className="space-y-4">
-        {["name", "email", "phone", "address", "state", "city"].map((field) => (
+        {["name", "email", "contact", "address", "state", "city"].map((field) => (
           <div key={field}>
             <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-1 capitalize">
               {field}
