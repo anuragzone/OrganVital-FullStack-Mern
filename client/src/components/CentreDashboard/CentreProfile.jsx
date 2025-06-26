@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchCenterProfile, updateCenterProfile } from "../../utils/CenterApi";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CentreProfile = () => {
   const [profile, setProfile] = useState(null);
@@ -15,6 +17,7 @@ const CentreProfile = () => {
         setFormData(data);
       } catch (err) {
         console.error("Error fetching center profile:", err.message);
+        toast.error("❌ Failed to load profile");
       } finally {
         setLoading(false);
       }
@@ -32,14 +35,21 @@ const CentreProfile = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+
+    const isDataChanged = JSON.stringify(formData) !== JSON.stringify(profile);
+    if (!isDataChanged) {
+      toast.info("⚠️ No changes made to update.");
+      return;
+    }
+
     try {
       await updateCenterProfile(formData);
-      alert("✅ Profile updated successfully!");
+      toast.success("✅ Profile updated successfully!");
       setEditing(false);
-      setProfile(formData); 
+      setProfile(formData);
     } catch (err) {
       console.error("Update failed:", err.message);
-      alert("❌ Failed to update profile.");
+      toast.error("❌ Failed to update profile.");
     }
   };
 
@@ -48,6 +58,8 @@ const CentreProfile = () => {
 
   return (
     <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md mt-10">
+      <ToastContainer position="top-center" autoClose={3000} />
+      
       <h1 className="text-3xl font-bold mb-6 text-red-600 text-center">Center Profile</h1>
 
       <form onSubmit={handleUpdate} className="space-y-4">
@@ -92,5 +104,3 @@ const CentreProfile = () => {
 };
 
 export default CentreProfile;
-
-
